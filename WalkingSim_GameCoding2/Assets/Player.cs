@@ -1,0 +1,136 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+public class Player : MonoBehaviour
+{
+    [Header("Movement")]
+    public float walkSpeed = 5f;
+    public float runSpeed = 10f;
+    public float jumpHeight = 5f;
+
+    public Transform cameraTransform;
+    public float lookSensetivity = 1f;
+
+    private CharacterController cc;
+
+    private Vector2 moveInput;
+    private Vector2 lookInput;
+    private float verticalVelocity;//current upward/downward speed
+    private float gravity = -20f;//CONSTANT downward acceleration
+    private float pitch;
+
+    private GameObject currentTarget;
+    public Image reticleImage;
+    private bool interactPressed;
+
+    private bool isRunning;
+    private bool isJumping;
+
+
+    void Awake()
+    {
+        cc = GetComponent<CharacterController>();
+
+        //OPTIONAL CURSOR LOCK
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        //find reticle
+        reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
+        reticleImage.color = new Color(0, 0, 0, .7f);
+    }
+
+    void Update()
+    {
+        HandleLook();
+        HandleMovement();
+    }
+
+    private void HandleLook()
+    {
+        //rotates player
+        float yaw = lookInput.x * lookSensetivity;
+        //vertical rotation of cam
+        float pitchDelta = lookInput.y * lookSensetivity;
+
+        transform.Rotate(Vector3.up * yaw);
+
+        pitch -= pitchDelta;
+        //clamp so we dont go upside down
+        pitch = Mathf.Clamp(pitch, -90, 90);
+
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0, 0);
+    }
+
+    private void HandleMovement()
+    {
+        bool grounded = cc.isGrounded;
+        Debug.Log("is Grounded:" + grounded);
+
+        //this keeps the cc snapped to the ground
+        if (grounded && verticalVelocity < 0)
+        {
+            verticalVelocity = -2f;
+        }
+
+        float currentSpeed = walkSpeed;
+
+        if (isRunning)
+        {
+            currentSpeed = runSpeed;
+        }
+        else if (!isRunning)
+        {
+            currentSpeed = walkSpeed;
+        }
+
+        Vector3 move = transform.right * moveInput.x * currentSpeed + transform.forward *  moveInput.y* currentSpeed;
+
+        if (isJumping && grounded)
+        {
+            verticalVelocity = Mathf.Sqrt(f: jumpHeight * -2f * gravity);
+        }
+        else
+        {
+            isJumping = false;
+        }
+
+        Vector3 velocity = Vector3.up * verticalVelocity;
+        cc.Move(motion: (move + velocity) * Time.deltaTime);
+        //cc.Move
+
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        lookInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed) isJumping = true;
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        isRunning = context.ReadValueAsButton();
+    }
+
+        public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed) interactPressed = true;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+
+    }
+}
+
+
