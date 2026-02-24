@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     {
         HandleLook();
         HandleMovement();
+        CheckInteract();
+        HandleInteract();
     }
 
     private void HandleLook()
@@ -102,6 +104,34 @@ public class Player : MonoBehaviour
 
     }
 
+    void CheckInteract()
+    {
+        if(reticleImage != null) reticleImage.color = new Color (0, 0, 0, .7f);
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        RaycastHit hit;
+        bool didHit = Physics.Raycast(ray, out hit, 3);
+        if (!didHit) return;
+        if(hit.collider.CompareTag("Interactable"))
+        {
+            if (reticleImage != null)
+            {
+                reticleImage.color = Color.red;
+            }
+        }
+
+        Debug.DrawRay (cameraTransform.position, cameraTransform.forward * 3, Color.blue);
+    }
+
+    void HandleInteract()
+    {
+        if(!interactPressed) return;
+        interactPressed = false;
+        if(currentTarget == null) return;
+        Destroy(currentTarget);
+
+        currentTarget = null;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -129,7 +159,7 @@ public class Player : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-
+        Debug.Log("CC Collided with: " + hit.gameObject.name);
     }
 }
 
