@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -20,9 +21,13 @@ public class Player : MonoBehaviour
     private float gravity = -20f;//CONSTANT downward acceleration
     private float pitch;
 
+
+    [Header("Interaction Variables")]
     private GameObject currentTarget;
     public Image reticleImage;
     private bool interactPressed;
+    //this is our event that the other scripts will be listening for
+    public static event Action<NPCData> OnDialogueRequested;
 
     private bool isRunning;
     private bool isJumping;
@@ -160,6 +165,11 @@ public class Player : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.Log("CC Collided with: " + hit.gameObject.name);
+    }
+
+    public void RequestDialogue(NPCData npcData)
+    {
+        OnDialogueRequested?.Invoke(npcData);
     }
 }
 
