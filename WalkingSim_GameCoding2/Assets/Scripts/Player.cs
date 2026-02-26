@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     private CharacterController cc;
 
+    [Header("Camera Options")]
     private Vector2 moveInput;
     private Vector2 lookInput;
     private float verticalVelocity;//current upward/downward speed
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     private bool interactPressed;
     //this is our event that the other scripts will be listening for
     public static event Action<NPCData> OnDialogueRequested;
+    private Interactable currentInteractable;
 
     private bool isRunning;
     private bool isJumping;
@@ -113,28 +115,32 @@ public class Player : MonoBehaviour
     {
         if(reticleImage != null) reticleImage.color = new Color (0, 0, 0, .7f);
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-        RaycastHit hit;
-        bool didHit = Physics.Raycast(ray, out hit, 3);
-        if (!didHit) return;
-        if(hit.collider.CompareTag("Interactable"))
+        //RaycastHit hit;
+       // bool didHit = Physics.Raycast(ray, out hit, 3);
+        //if (!didHit) return;
+        if(Physics.Raycast(ray, out RaycastHit hit, 3f))
         {
-            if (reticleImage != null)
+            currentInteractable = hit.collider.GetComponentInParent<Interactable>();
+            if (currentInteractable != null && reticleImage != null)
             {
                 reticleImage.color = Color.red;
+                Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 3, Color.blue);
+            }
+            else
+            {
+                Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 3, Color.blue);
             }
         }
 
-        Debug.DrawRay (cameraTransform.position, cameraTransform.forward * 3, Color.blue);
+        
     }
 
     void HandleInteract()
     {
         if(!interactPressed) return;
         interactPressed = false;
-        if(currentTarget == null) return;
-        Destroy(currentTarget);
-
-        currentTarget = null;
+        if (currentInteractable == null) return;
+        currentInteractable.Interact(this);
     }
 
     public void OnMove(InputAction.CallbackContext context)
