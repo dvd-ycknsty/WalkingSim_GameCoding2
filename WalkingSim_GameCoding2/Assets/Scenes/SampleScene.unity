@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 99060564}
   - component: {fileID: 99060563}
   - component: {fileID: 99060562}
+  - component: {fileID: 99060568}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -291,6 +292,24 @@ Transform:
   - {fileID: 305978631}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &99060568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99060561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76dab13f489a5a449b182daedaff179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  walkSpeed: 5
+  runSpeed: 10
+  jumpHeight: 5
+  cameraTransform: {fileID: 330585546}
+  lookSensetivity: 1
+  reticleImage: {fileID: 660925463}
 --- !u!1 &305978630
 GameObject:
   m_ObjectHideFlags: 0
