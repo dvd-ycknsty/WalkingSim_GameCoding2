@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c75fb4413fd06f4c804372b8be9c414, type: 3}
   m_Name: OpeningLine
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  displayName: 
-  placeHolderOpeningLine: 
+  displayName: Casey
+  placeHolderOpeningLine: Afternoon, sir.
