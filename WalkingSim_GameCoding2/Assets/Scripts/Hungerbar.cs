@@ -26,7 +26,7 @@ public class Hungerbar : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                hunger -= 1f * Time.deltaTime;
+                hunger -= 0.5f * Time.deltaTime;
             }
         }
 

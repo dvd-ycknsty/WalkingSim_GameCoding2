@@ -14,7 +14,7 @@ public class NPCData : ScriptableObject
     [Header("if there are no choices, we show buttons after line ends")]
     public DialogueChoices[] choices;
 
-    [Header("if no choices, auto continue to the next node)"]
+    [Header("if no choices, auto continue to the next node")]
     public NPCData nextNode;
 }
 

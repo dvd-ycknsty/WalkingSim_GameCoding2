@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FoodPickup : MonoBehaviour
 {
-    [SerializeField] Hungerbar hungerbar;
-    [SerializeField] Thirstbar thirstbar;
+
+    private Hungerbar hungerbar;
+    private Thirstbar thirstbar;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag ("Player"))

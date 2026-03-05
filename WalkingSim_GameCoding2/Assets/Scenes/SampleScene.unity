@@ -1687,7 +1687,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   dialoguePanel: {fileID: 1863628907}
   displayName: {fileID: 1918012614}
-  placeholderOpeningLine: {fileID: 463153512}
+  lineText: {fileID: 0}
+  choicesContainer: {fileID: 0}
+  choicesButtonPrefab: {fileID: 0}
 --- !u!4 &921428480
 Transform:
   m_ObjectHideFlags: 0
@@ -1902,7 +1904,6 @@ GameObject:
   - component: {fileID: 1675259634}
   - component: {fileID: 1675259633}
   - component: {fileID: 1675259632}
-  - component: {fileID: 1675259637}
   m_Layer: 0
   m_Name: FoodEx
   m_TagString: Interactable
@@ -2024,18 +2025,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1675259637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1675259631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 093db08239ad6234bbeecd4303b61f32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestroyInteractable
 --- !u!1 &1691866244
 GameObject:
   m_ObjectHideFlags: 0
