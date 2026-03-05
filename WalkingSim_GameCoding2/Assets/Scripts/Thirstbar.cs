@@ -22,9 +22,14 @@ public class Thirstbar : MonoBehaviour
 
         thirst -= 1f * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.W))
+        if (thirst >= 0)
         {
-            thirst -= 1f * Time.deltaTime;
+            if (Input.GetKey(KeyCode.W))
+            {
+                thirst -= 1f * Time.deltaTime;
+            }
+
         }
+
     }
 }

@@ -22,9 +22,14 @@ public class Hungerbar : MonoBehaviour
 
         hunger -= 1f * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.W))
+        if (hunger >= 0)
         {
-            hunger -= 1f * Time.deltaTime;
+            if (Input.GetKey(KeyCode.W))
+            {
+                hunger -= 1f * Time.deltaTime;
+            }
         }
+
+        
     }
 }
