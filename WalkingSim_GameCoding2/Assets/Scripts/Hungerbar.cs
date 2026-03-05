@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine;
+
+public class Hungerbar : MonoBehaviour
+{
+    public Slider hungerSlider;
+
+    public float hunger;
+    float maxHunger = 100f;
+
+    void Start()
+    {
+        hunger = maxHunger;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        hungerSlider.value = hunger;
+
+        hunger -= 1f * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            hunger -= 1f * Time.deltaTime;
+        }
+    }
+}
