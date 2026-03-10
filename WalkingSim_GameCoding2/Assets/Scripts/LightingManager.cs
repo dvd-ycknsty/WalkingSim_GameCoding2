@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
     [SerializeField] private Light directionalLight;

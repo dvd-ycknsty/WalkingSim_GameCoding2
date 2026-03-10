@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         bool grounded = cc.isGrounded;
-        Debug.Log("is Grounded:" + grounded);
+        //Debug.Log("is Grounded:" + grounded);
 
         //this keeps the cc snapped to the ground
         if (grounded && verticalVelocity < 0)
@@ -166,12 +166,12 @@ public class Player : MonoBehaviour
         public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed) interactPressed = true;
-        Debug.Log("OnInteract fired. performed=" + context.performed);
+        //Debug.Log("OnInteract fired. performed=" + context.performed);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log("CC Collided with: " + hit.gameObject.name);
+        //Debug.Log("CC Collided with: " + hit.gameObject.name);
     }
 
     public void RequestDialogue(NPCData npcData)
