@@ -10,7 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c75fb4413fd06f4c804372b8be9c414, type: 3}
-  m_Name: OpeningLine
+  m_Name: Warning 2
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  displayName: Casey
-  placeHolderOpeningLine: Afternoon, sir.
+  displayName: 4th Wall Breaker
+  lines:
+  - Well
+  - Y'know..
+  - 'Plans might fall through..
+
+'
+  choices: []
+  nextNode: {fileID: 0}
