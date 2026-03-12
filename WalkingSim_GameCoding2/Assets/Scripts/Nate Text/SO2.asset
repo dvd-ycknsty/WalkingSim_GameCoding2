@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c75fb4413fd06f4c804372b8be9c414, type: 3}
+  m_Name: SO2
+  m_EditorClassIdentifier: Assembly-CSharp::NPCData
+  displayName: Nathaniel
+  lines:
+  - 'What do you think you''re doing?
+
+'
+  choices:
+  - choiceText: Going to the bathroom?
+    nextNode: {fileID: 11400000, guid: 9ce4ce87b16d1784aa0e44d5dc111d5e, type: 2}
+  - choiceText: Nothing
+    nextNode: {fileID: 11400000, guid: 3e74b8f019f3e64429bdcd0044feaf8b, type: 2}
+  nextNode: {fileID: 0}

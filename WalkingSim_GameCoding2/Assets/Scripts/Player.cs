@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         cc = GetComponent<CharacterController>();
 
         //OPTIONAL CURSOR LOCK
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         //find reticle
