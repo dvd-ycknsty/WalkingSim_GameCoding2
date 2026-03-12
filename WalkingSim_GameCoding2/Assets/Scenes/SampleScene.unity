@@ -170,7 +170,6 @@ GameObject:
   - component: {fileID: 99060563}
   - component: {fileID: 99060562}
   - component: {fileID: 99060568}
-  - component: {fileID: 99060570}
   - component: {fileID: 99060569}
   - component: {fileID: 99060571}
   m_Layer: 0
@@ -515,18 +514,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hungerbar
   hungerSlider: {fileID: 2075413225}
   hunger: 0
---- !u!114 &99060570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99060561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad5ff60ee8ec3a41b3293bbadfe070d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConsumptionManager
 --- !u!114 &99060571
 MonoBehaviour:
   m_ObjectHideFlags: 0
